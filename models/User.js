@@ -24,7 +24,16 @@ const UserSchema = new Schema ({
         required : true,
         trim : true,
          
-    }
+    },
+    role : {
+        type : String,
+        enum : ["student", "teacher", "admin"],
+        default : "student",
+    },
+    courses : [{ //* Bunu yapma sebebimiz öğrencileri bir kursa enroll edicez, bunuda tekil sayfalarında falan göstericez bunu kayıt oldu bundan çıktı falan diye.
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "Course",
+    }]
 
 });
 
